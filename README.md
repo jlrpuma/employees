@@ -2,7 +2,7 @@
 
 ## Usage
 
-1) Two endpoints weere provided on Controllers layer, to receive a CSV file /
+1) Two endpoints weere provided on Controllers layer, to receive a CSV file (***Provide the file without headers, just with the information***) /
    1) *greaterOverlap* will get you the pair with the grater overlap in days
         <pre><code>curl --location --request POST 'localhost:8080/greaterOverlap' --form 'file=@"{PATH-TO-YOUR-CSV}"'</code></pre>
    2) *multipleOverlaps* will get you the full list of pairs that have worked in projects together with the amout of time overlaped in days
