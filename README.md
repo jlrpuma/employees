@@ -16,4 +16,7 @@ over it can be implemented.
 - TimeUtil.parseDate can use all this formats to handle the data provided on csv "yyyy-MM-dd", "MM/dd/yyyy", "dd/MM/yyyy", "MM-dd-yyyy", "dd-MM-yyyy" 
 
 
+## Tests
 
+- Some test were added in order to check the bussines logic required to get the information processed they can be run with
+      <pre><code>mvn test</code></pre>

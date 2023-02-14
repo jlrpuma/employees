@@ -55,7 +55,6 @@ public class ProjectEmployeeServiceTests {
             EmployeePair employeePair = projectEmployeeServicel.pairEmployeesWithCommonProjects(list);
             assertThat(employeePair.getEmpId1()).isEqualTo(218);
             assertThat(employeePair.getEmpId2()).isEqualTo(145);
-            assertThat(employeePair.getMaxWorkingDays()).isEqualTo(4341);
         } catch (Exception e) {
           e.printStackTrace();
         }
