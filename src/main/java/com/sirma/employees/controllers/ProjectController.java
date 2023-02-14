@@ -25,32 +25,22 @@ public class ProjectController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/greaterOverlap")
-    public ResponseEntity<EmployeePair> greaterOverlap(@RequestParam("file") MultipartFile file) {
-        try {
+    public ResponseEntity<EmployeePair> greaterOverlap(@RequestParam("file") MultipartFile file) throws Exception{
+        List<String[]> rows = CVSReader.readCSV(file.getInputStream());
+        List<ProjectEmployee> projectEmployees = projectEmployeeService.rowsToProjectEmployees(rows);
+        EmployeePair pairEmployeesWithCommonProjects = projectEmployeeService.pairEmployeesWithCommonProjects(projectEmployees);
 
-            List<String[]> rows = CVSReader.readCSV(file.getInputStream());
-            List<ProjectEmployee> projectEmployees = projectEmployeeService.rowsToProjectEmployees(rows);
-            EmployeePair pairEmployeesWithCommonProjects = projectEmployeeService.pairEmployeesWithCommonProjects(projectEmployees);
-
-            return ResponseEntity.ok().body(pairEmployeesWithCommonProjects);
-        } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getMessage());
-        }
+        return ResponseEntity.ok().body(pairEmployeesWithCommonProjects);
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/multipleOverlaps")
-    public ResponseEntity<List<EmployeePairProject>> multipleOverlaps(@RequestParam("file") MultipartFile file) {
-        try {
+    public ResponseEntity<List<EmployeePairProject>> multipleOverlaps(@RequestParam("file") MultipartFile file) throws Exception{
+        List<String[]> rows = CVSReader.readCSV(file.getInputStream());
+        List<ProjectEmployee> projectEmployees = projectEmployeeService.rowsToProjectEmployees(rows);
+        List<EmployeePairProject> listEmployeesWithCommonProjects = projectEmployeeService.listEmployeesWithCommonProjects(projectEmployees);
 
-            List<String[]> rows = CVSReader.readCSV(file.getInputStream());
-            List<ProjectEmployee> projectEmployees = projectEmployeeService.rowsToProjectEmployees(rows);
-            List<EmployeePairProject> listEmployeesWithCommonProjects = projectEmployeeService.listEmployeesWithCommonProjects(projectEmployees);
-
-            return ResponseEntity.ok().body(listEmployeesWithCommonProjects);
-        } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, e.getMessage());
-        }
+        return ResponseEntity.ok().body(listEmployeesWithCommonProjects);
     }
 
 }

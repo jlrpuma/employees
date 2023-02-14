@@ -4,6 +4,7 @@ import com.sirma.employees.models.ProjectEmployee;
 import com.sirma.employees.utils.EmployeePair;
 import com.sirma.employees.utils.EmployeePairProject;
 import com.sirma.employees.utils.TimeUtil;
+import com.sirma.employees.utils.exceptions.BusinessLogicException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class ProjectEmployeeServiceImpl implements ProjectEmployeeService {
         }
 
         if (employeePairs.size() == 0) {
-            throw new Exception("There is no overlapped times between the employees on csv");
+            throw new BusinessLogicException("There is no overlapped times between the employees on csv");
         }
 
         Collections.sort(employeePairs, Comparator.comparingLong(EmployeePair::getMaxWorkingDays).reversed());
@@ -70,7 +71,7 @@ public class ProjectEmployeeServiceImpl implements ProjectEmployeeService {
         }
 
         if (employeePair.getMaxWorkingDays().equals(0L)) {
-            throw new Exception("There is no overlapped times between the employees on csv");
+            throw new BusinessLogicException("There is no overlapped times between the employees on csv");
         }
 
         return employeePair;
