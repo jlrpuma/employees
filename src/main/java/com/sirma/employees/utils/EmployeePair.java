@@ -1,14 +1,12 @@
 package com.sirma.employees.utils;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class EmployeePair {
     private Integer empId1;
     private Integer empId2;
