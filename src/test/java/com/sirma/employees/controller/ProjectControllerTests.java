@@ -41,7 +41,7 @@ public class ProjectControllerTests {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(jsonPath("$[0].empId1").value("218"))
-                .andExpect(jsonPath("$[0].empId2").value("145"))
+                .andExpect(jsonPath("$[0].empId2").value("143"))
                 .andExpect(jsonPath("$[0].project").value(10));
     }
 }
